@@ -13,6 +13,20 @@ static String requestBody ="""
                "password": "emilyspass"
             }
             """;
+static String newProduct = """
+        {
+            "title": "Perfume Oil",
+            "description": "Mega Discount, Impression of A...",
+            "price": 13,
+            "discountPercentage": 8.4,
+            "rating": 4.26,
+            "stock": 65,
+            "brand": "Impression of Acqua Di Gio",
+            "category": "fragrances",
+            "thumbnail": "https://i.dummyjson.com/data/products/11/thumnail.jpg"
+        }
+        """;
+
 @Nested
 class SicrediTests {
 
@@ -69,15 +83,21 @@ class SicrediTests {
                 .then().log().status()
                 .statusCode(200)
                 .body(matchesJsonSchemaInClasspath("schemas/productsSchema.json"));
-
-
-
-
-
-
-
     }
 
+    @Test
+    public void ShouldAddProduct() {
+        RestAssured.baseURI = baseURI;
+        given()
+                .header("Content-Type", "application/json")
+                .header("Authorization", "Bearer " + accessToken)
+                .body(newProduct)
+                .when()
+                .post("/products/add")
+                .then().log().status()
+                .statusCode(201)
+                .body(matchesJsonSchemaInClasspath("schemas/newProductSchema.json"));
+    }
 
 }
 
