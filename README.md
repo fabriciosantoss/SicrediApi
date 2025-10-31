@@ -12,8 +12,9 @@ Este projeto realiza testes automatizados na API pública [DummyJSON](https://du
 ## 🚀 Como executar
 1. Clone o repositório:
    ```bash
-   git clone https://https://github.com/fabriciosantoss/SicrediApi.git
-   cd nome-do-projeto
+    git clone https://github.com/fabriciosantoss/SicrediApi.git
+    cd SicrediApi
+
 
 2. Execute os testes com o Maven:
    ```bash
