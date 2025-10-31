@@ -1,3 +1,5 @@
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Nested;
@@ -38,9 +40,11 @@ public class ApiTests {
         """;
 
     @Nested
+    @Feature("Autenticação")
     class SicrediTests {
 
         @BeforeAll
+        @Description("Deve autenticar usuário com credenciais válidas e retornar token JWT")
         public static void ShouldGetLogin() {
             RestAssured.baseURI = baseURI;
             accessToken = given()
@@ -55,6 +59,7 @@ public class ApiTests {
         }
 
         @Test
+        @Description("Deve retornar uma mensagem de credencial inválida")
         public void ShouldGetAnInvalidLogin() {
             RestAssured.baseURI = baseURI;
             given()
@@ -69,6 +74,7 @@ public class ApiTests {
         }
 
         @Test
+        @Description("Deve retornar status 200")
         public void ShouldGetTest() {
             RestAssured.baseURI = baseURI;
             given()
@@ -83,6 +89,7 @@ public class ApiTests {
         }
 
         @Test
+        @Description("Deve retornar uma lista de usuários")
         public void ShouldGetUsers() {
             RestAssured.baseURI = baseURI;
             given()
@@ -94,6 +101,7 @@ public class ApiTests {
         }
 
         @Test
+        @Description("Deve retornar uma lista de produtos")
         public void ShouldGetProducts() {
             given()
                     .header("Content-Type", "application/json")
@@ -105,6 +113,7 @@ public class ApiTests {
         }
 
         @Test
+        @Description("Deve criar um produto")
         public void ShouldAddProduct() {
             RestAssured.baseURI = baseURI;
             given()
@@ -119,6 +128,7 @@ public class ApiTests {
         }
 
         @Test
+        @Description("Deve listar os produtos na rota com autenticação")
         public void ShouldGetProductsWithAuth() {
             given()
                     .header("Content-Type", "application/json")
@@ -131,6 +141,7 @@ public class ApiTests {
         }
 
         @Test
+        @Description("Deve retornar uma mensagem de Token inválido")
         public void ShouldGetAnInvalidTokenMessage() {
             given()
                     .header("Content-Type", "application/json")
@@ -143,6 +154,7 @@ public class ApiTests {
         }
 
         @Test
+        @Description("Não deve listar os produtos na rota com autenticação")
         public void ShouldNotGetProductsWithAuth() {
             given()
                     .header("Content-Type", "application/json")

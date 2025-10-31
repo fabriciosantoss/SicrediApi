@@ -18,6 +18,10 @@ Este projeto realiza testes automatizados na API pública [DummyJSON](https://du
 2. Execute os testes com o Maven:
    ```bash
     mvn clean test
+3. 🚀 Próximo passo: gerar o relatório Allure
+    ```bash
+    allure serve target/allure-results
+
 
 ## 🧪 Plano de Testes
 
