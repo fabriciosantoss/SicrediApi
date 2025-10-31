@@ -31,7 +31,7 @@ Este projeto realiza testes automatizados na API pública [DummyJSON](https://du
 | -------------- | --------------------------------------- |----------------------------------|
 | Login válido   | Realizar login com credenciais corretas | Retorna `200` e token válido     |
 | Login inválido | Realizar login com senha incorreta      | Retorna `401` e mensagem de erro |
-| Token inválido | Requisição com token inválido           | Retorna `500`                    |
+| Token inválido | Requisição com token inválido           | Retorna `403`                    |
 | Sem token      | Requisição sem token                    | Retorna `401`                    |
 
 ## 📦 Produtos
